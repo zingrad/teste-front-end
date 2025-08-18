@@ -16,12 +16,17 @@
     &:hover {
       background: #f0f0f0;
     }
+
+      &:first-child {
+      color: #9F9F9F;
+    }
   }
 
   span {
     display: inline-block;
     width: 2rem;
     text-align: center;
-    font-weight: bold;
+    font-weight: 500;
+    color: #271C47;
   }
 }

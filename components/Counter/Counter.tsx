@@ -1,11 +1,28 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./Counter.module.scss";
 
-export default function Counter() {
+interface CounterProps {
+  onChange?: (value: number) => void;
+}
+
+export default function Counter({ onChange }: CounterProps) {
   const [count, setCount] = useState(1);
 
-  const increment = () => setCount(prev => prev + 1);
-  const decrement = () => setCount(prev => Math.max(0, prev)); 
+  const increment = () => {
+    setCount(prev => {
+      const newCount = prev + 1;
+      onChange?.(newCount);
+      return newCount;
+    });
+  };
+
+  const decrement = () => {
+    setCount(prev => {
+      const newCount = Math.max(0, prev - 1);
+      onChange?.(newCount);
+      return newCount;
+    });
+  };
 
   return (
     <div className={styles.counter}>

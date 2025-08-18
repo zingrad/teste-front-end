@@ -111,17 +111,85 @@
             padding-bottom: 1.25rem;
         }
 
-        
         .showMore {
             color: $purple;
             font-size: .75rem;
-       
+
         }
 
-        .btn{
-            @include btn($yellow,#271C47);
+        .btn {
+            @include btn($yellow, #271C47);
             padding: 7px 78px;
+        }
+
+        .cart {
+            display: flex;
+            align-items: center;
             margin-top: 2rem;
+            gap: 12px;
+        }
+    }
+}
+
+/* Carrousel */
+
+.carouselWrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0 1rem;
+
+    .productCarousel {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+
+        @media (max-width: $breakpoint-tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: $breakpoint-mobile) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .prevBtn,
+    .nextBtn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: 0.2s;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+    }
+
+    .prevBtn {
+
+
+        @media (max-width: $breakpoint-desktop) {
+            left: 1rem;
+        }
+    }
+
+    .nextBtn {
+        right: -3rem;
+
+        @media (max-width: $breakpoint-desktop) {
+            right: 1rem;
         }
     }
 }
