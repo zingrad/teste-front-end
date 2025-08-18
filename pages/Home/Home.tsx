@@ -9,6 +9,7 @@ import tools from '../../src/assets/icons/tools.svg'
 import health from '../../src/assets/icons/health.svg'
 import sports from '../../src/assets/icons/run.svg'
 import fashion from '../../src/assets/icons/fashion.svg'
+import ProductCarousel from '../../components/ProductCarousel/ProductCarousel';
 
 export default function Home() {
     return (
@@ -54,7 +55,18 @@ export default function Home() {
             </section>
 
             <section className={styles.relatedProducts}>
-                <h2>Produtos relacionados</h2>
+                <h2 className={styles.relatedTitle}>Produtos relacionados</h2>
+                 <nav>
+                    <ul>
+                        <li><a href="#">Celular</a></li>
+                        <li><a href="#">Acessórios</a></li>
+                        <li><a href="#">Tablets</a></li>
+                        <li><a href="#">Notebooks</a></li>
+                        <li><a href="#">TVs</a></li>
+                        <li><a href="#">Ver todos</a></li>
+                    </ul>
+                </nav>
+                <ProductCarousel />
             </section>
         </main>
     );

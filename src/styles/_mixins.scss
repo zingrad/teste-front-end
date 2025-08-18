@@ -11,6 +11,7 @@
   text-decoration: none;
   transition: background-color 0.3s ease;
   width: fit-content;
+  text-transform: uppercase;
 
   &:hover {
     background-color: darken($bg-color, 10%);
@@ -25,4 +26,9 @@
   width: 1280px;
   margin: 0 auto;
   padding: 2.5rem 5rem; // medida do layout 80px de cada lado 5rem
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    width: 100%;
+    padding: 1.5rem;
+  }
 }
