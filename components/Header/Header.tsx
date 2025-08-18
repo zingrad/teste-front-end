@@ -1,12 +1,12 @@
 import styles from './Header.module.scss'
 
-import Shield from '../../src/assets/icons/shieldCheck.svg';
+import shield from '../../src/assets/icons/shieldCheck.svg';
 import packageIcon from '../../src/assets/icons/package.svg';
 import heart from '../../src/assets/icons/heart.svg';
 import user from '../../src/assets/icons/user.svg';
 import cart from '../../src/assets/icons/shoppingCart.svg';
 import magnifyingGlass from '../../src/assets/icons/magnifyingGlass.svg';
-import logo from '../../src/assets/images/logo.png';
+import logo from '../../src/assets/images/logo.webp';
 import premium from '../../src/assets/icons/premium.svg';
 
 export function Header() {
@@ -15,15 +15,15 @@ export function Header() {
             <div className={styles.headerContainer}>
                 <div className={styles.topHeader}>
                     <div className={styles.perks}>
-                        <img src={Shield} alt="Compra 100% segura" title='Compra 100% segura' />
+                        <img src={shield} alt="Compra 100% segura" title='Compra 100% segura' />
                         <span>Compra <strong>100% segura</strong></span>
                     </div>
                     <div className={styles.perks}>
-                        <img src={Shield} alt="Compra 100% segura" title='Compra 100% segura' />
+                        <img src={shield} alt="Compra 100% segura" title='Compra 100% segura' />
                         <span><strong>Frete grátis</strong> acima de R$ 200 </span>
                     </div>
                     <div className={styles.perks}>
-                        <img src={Shield} alt="Compra 100% segura" title='Compra 100% segura' />
+                        <img src={shield} alt="Compra 100% segura" title='Compra 100% segura' />
                         <span><strong>Parcele</strong> suas compras</span>
                     </div>
                 </div>
