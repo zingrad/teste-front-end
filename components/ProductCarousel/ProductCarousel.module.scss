@@ -179,6 +179,7 @@
 
     .prevBtn {
 
+        left: -3rem;
 
         @media (max-width: $breakpoint-desktop) {
             left: 1rem;
