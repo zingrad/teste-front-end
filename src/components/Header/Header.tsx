@@ -1,13 +1,13 @@
 import styles from './Header.module.scss'
 
-import shield from '../../src/assets/icons/shieldCheck.svg';
-import packageIcon from '../../src/assets/icons/package.svg';
-import heart from '../../src/assets/icons/heart.svg';
-import user from '../../src/assets/icons/user.svg';
-import cart from '../../src/assets/icons/shoppingCart.svg';
-import magnifyingGlass from '../../src/assets/icons/magnifyingGlass.svg';
-import logo from '../../src/assets/images/logo.webp';
-import premium from '../../src/assets/icons/premium.svg';
+import shield from '../../assets/icons/shieldCheck.svg';
+import packageIcon from '../../assets/icons/package.svg';
+import heart from '../../assets/icons/heart.svg';
+import user from '../../assets/icons/user.svg';
+import cart from '../../assets/icons/shoppingCart.svg';
+import magnifyingGlass from '../../assets/icons/magnifyingGlass.svg';
+import logo from '../../assets/images/logo.webp';
+import premium from '../../assets/icons/premium.svg';
 
 export function Header() {
     return (

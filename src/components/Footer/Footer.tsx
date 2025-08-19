@@ -1,9 +1,9 @@
 import styles from './Footer.module.scss';
 
-import logo from '../../src/assets/images/logo.webp'
-import instagran from '../../src/assets/icons/instagram.svg'
-import facebook from '../../src/assets/icons/facebook.svg'
-import linkedin from '../../src/assets/icons/linkedin.svg'
+import logo from '../../assets/images/logo.webp'
+import instagran from '../../assets/icons/instagram.svg'
+import facebook from '../../assets/icons/facebook.svg'
+import linkedin from '../../assets/icons/linkedin.svg'
 
 export default function Footer() {
     return (

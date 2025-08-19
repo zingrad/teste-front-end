@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import type { Product } from "../../src/types/product";
+import type { Product } from "../../types/product";
 import styles from './ProductCarousel.module.scss'
-import close from '../../src/assets/icons/close.svg'
+import close from '../../assets/icons/close.svg'
 
 import Counter from '../Counter/Counter';
 
