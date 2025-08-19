@@ -12,7 +12,6 @@ export default function ProductCarousel() {
     const [modalProduct, setModalProduct] = useState<Product | null>(null);
     const [quantity, setQuantity] = useState(1);
 
-    // Controle do carrossel
     const [currentPage, setCurrentPage] = useState(0);
     const productsPerPageDesktop = 4;
     const productsPerPageTablet = 2;
@@ -39,7 +38,6 @@ export default function ProductCarousel() {
             .finally(() => setLoading(false));
     }, []);
 
-    // Atualiza productsPerPage quando a janela redimensionar
     useEffect(() => {
         const handleResize = () => setProductsPerPage(getProductsPerPage());
         window.addEventListener("resize", handleResize);

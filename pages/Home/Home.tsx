@@ -1,5 +1,3 @@
-// Home.tsx
-import { Link } from "react-router-dom";
 import Banner from '../../src/assets/images/banner.webp';
 import styles from './Home.module.scss';
 import technology from '../../src/assets/icons/technology.svg'
@@ -14,7 +12,6 @@ import logo from '../../src/assets/images/logo.webp';
 import ProductCarousel from '../../components/ProductCarousel/ProductCarousel';
 import Partners from '../../components/Partners/Partners'
 import Newsletter from '../../components/Newsletter/Newsletter'
-import Footer from '../../components/Footer/Footer'
 
 export default function Home() {
     return (
@@ -108,7 +105,6 @@ export default function Home() {
             </section>
             <Newsletter />
         </main>
-        <Footer />
         </>
     );
 }
