@@ -9,10 +9,16 @@ import tools from '../../src/assets/icons/tools.svg'
 import health from '../../src/assets/icons/health.svg'
 import sports from '../../src/assets/icons/run.svg'
 import fashion from '../../src/assets/icons/fashion.svg'
+import logo from '../../src/assets/images/logo.webp';
+
 import ProductCarousel from '../../components/ProductCarousel/ProductCarousel';
+import Partners from '../../components/Partners/Partners'
+import Newsletter from '../../components/Newsletter/Newsletter'
+import Footer from '../../components/Footer/Footer'
 
 export default function Home() {
     return (
+         <>
         <main>
             <section className={styles.banner}>
                 <div className={styles.bannerContainer}>
@@ -56,7 +62,7 @@ export default function Home() {
 
             <section className={styles.relatedProducts}>
                 <h2 className={styles.relatedTitle}>Produtos relacionados</h2>
-                 <nav>
+                <nav>
                     <ul>
                         <li><a href="#">Celular</a></li>
                         <li><a href="#">Acessórios</a></li>
@@ -68,6 +74,41 @@ export default function Home() {
                 </nav>
                 <ProductCarousel />
             </section>
+            <Partners />
+            <section className={styles.relatedProducts}>
+                <h2 className={styles.relatedTitle}>Produtos relacionados</h2>
+                <span>Ver todos</span>
+                <ProductCarousel />
+            </section>
+            <Partners />
+            <section className={styles.brands}>
+                <h2>Navegue por marcas</h2>
+                <div className={styles.brandsContainer}>
+                    <div className={styles.brand}>
+                        <img src={logo} alt="Econverse" title="Econverse" loading="lazy" />
+                    </div>
+                       <div className={styles.brand}>
+                        <img src={logo} alt="Econverse" title="Econverse" loading="lazy" />
+                    </div>
+                       <div className={styles.brand}>
+                        <img src={logo} alt="Econverse" title="Econverse" loading="lazy" />
+                    </div>
+                       <div className={styles.brand}>
+                        <img src={logo} alt="Econverse" title="Econverse" loading="lazy" />
+                    </div>
+                       <div className={styles.brand}>
+                        <img src={logo} alt="Econverse" title="Econverse" loading="lazy" />
+                    </div>
+                </div>
+            </section>
+             <section className={styles.relatedProducts}>
+                <h2 className={styles.relatedTitle}>Produtos relacionados</h2>
+                <span>Ver todos</span>
+                <ProductCarousel />
+            </section>
+            <Newsletter />
         </main>
+        <Footer />
+        </>
     );
 }
