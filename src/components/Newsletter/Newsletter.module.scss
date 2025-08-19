@@ -1,0 +1,78 @@
+@import '../../styles/global.scss';
+
+.newsletter {
+  background-color: #271C47;
+  color: #fff;
+
+  .newsletterContainer {
+    @include container;
+    max-width: 1380px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    gap: 80px;
+
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: .875rem;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .inputGroup {
+      display: flex;
+      gap: 10px;
+    }
+
+    input {
+      padding: 12px 22px;
+      border-radius: 8px;
+      border: none;
+
+      &::placeholder {
+        color: #676767;
+        font-size: .875rem;
+      }
+    }
+
+    .btn {
+      @include btn($yellow, #161615);
+      font-size: .875rem;
+    }
+
+    .checkboxContainer {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+     @media screen and (max-width: $breakpoint-desktop) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      grid-template-columns: repeat(1, 1fr);
+
+      .inputGroup {
+        flex-wrap: wrap;
+      }
+
+      input[type="text"] {
+        width: 100%;
+      }
+    }
+  }
+}
