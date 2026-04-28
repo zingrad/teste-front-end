@@ -58,7 +58,7 @@ export default function Home() {
             </section>
 
             <section className={styles.relatedProducts}>
-                <h2 className={styles.relatedTitle}>Produtos relacionados</h2>
+                <h2 className={styles.relatedTitle}>Produtos Relacionados</h2>
                 <nav>
                     <ul>
                         <li><a href="#">Celular</a></li>
@@ -73,7 +73,7 @@ export default function Home() {
             </section>
             <Partners />
             <section className={styles.relatedProducts}>
-                <h2 className={styles.relatedTitle}>Produtos relacionados</h2>
+                <h2 className={styles.relatedTitle}>Produtos Relacionados</h2>
                 <span>Ver todos</span>
                 <ProductCarousel />
             </section>
@@ -99,7 +99,7 @@ export default function Home() {
                 </div>
             </section>
              <section className={styles.relatedProducts}>
-                <h2 className={styles.relatedTitle}>Produtos relacionados</h2>
+                <h2 className={styles.relatedTitle}>Produtos Relacionados</h2>
                 <span>Ver todos</span>
                 <ProductCarousel />
             </section>
