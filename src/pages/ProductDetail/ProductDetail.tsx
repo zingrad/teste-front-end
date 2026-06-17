@@ -35,9 +35,9 @@ export default function ProductDetail() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <p className={styles.loading}>Carregando produto...</p>;
-  if (error) return <p className={styles.error}>{error}</p>;
-  if (!product) return <p className={styles.error}>Produto não encontrado.</p>;
+  if (loading) return <p className={styles.loading} role="status" aria-live="polite">Carregando produto...</p>;
+  if (error) return <p className={styles.error} role="alert">{error}</p>;
+  if (!product) return <p className={styles.error} role="alert">Produto não encontrado.</p>;
 
   const images = product.photos || [product.photo];
 
@@ -47,36 +47,49 @@ export default function ProductDetail() {
 
   return (
     <main className={styles.productDetail}>
-      <section className={styles.container}>
-        <div className={styles.gallery}>
+      <section className={styles.container} aria-label="Detalhes do produto">
+        <figure className={styles.gallery}>
           <div className={styles.mainImage}>
             <img
               src={selectedImage}
               alt={product.productName}
               title={product.productName}
-              loading="lazy"
+              width="400"
+              height="400"
             />
           </div>
-          <div className={styles.thumbnails}>
+          <figcaption className="sr-only" style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>
+            Galeria de imagens de {product.productName}
+          </figcaption>
+          <div className={styles.thumbnails} role="group" aria-label="Miniaturas do produto">
             {images.map((image, index) => (
-              <img
+              <button
                 key={index}
-                src={image}
-                alt={`${product.productName} ${index + 1}`}
-                title={`${product.productName} ${index + 1}`}
-                className={selectedImage === image ? styles.active : ""}
+                type="button"
                 onClick={() => setSelectedImage(image)}
-                loading="lazy"
-              />
+                aria-label={`Ver imagem ${index + 1} de ${product.productName}`}
+                aria-pressed={selectedImage === image}
+                style={{ padding: 0, border: 'none', background: 'none', cursor: 'pointer' }}
+              >
+                <img
+                  src={image}
+                  alt={`${product.productName} ${index + 1}`}
+                  title={`${product.productName} ${index + 1}`}
+                  className={selectedImage === image ? styles.active : ""}
+                  loading="lazy"
+                  width="100"
+                  height="100"
+                />
+              </button>
             ))}
           </div>
-        </div>
+        </figure>
 
         <div className={styles.info}>
           <h1>{product.productName}</h1>
 
-          <div className={styles.rating}>
-            <span className={styles.stars}>★★★★★</span>
+          <div className={styles.rating} aria-label={`Avaliação: 5 de 5 estrelas, ${product.reviews || 0} avaliações`}>
+            <span className={styles.stars} aria-hidden="true">★★★★★</span>
             <span className={styles.reviews}>
               ({product.reviews || 0} avaliações)
             </span>
@@ -84,6 +97,7 @@ export default function ProductDetail() {
 
           <div className={styles.priceSection}>
             <p className={styles.oldPrice}>
+              <span className="sr-only" style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>Preço anterior:</span>
               R${" "}
               {((product.price / (1 - 10 / 100)) * quantity).toLocaleString(
                 "pt-BR",
@@ -117,29 +131,29 @@ export default function ProductDetail() {
 
           <div className={styles.actions}>
             <Counter onChange={setQuantity} />
-            <button className={styles.btn} onClick={handleAddToCart}>
+            <button className={styles.btn} onClick={handleAddToCart} type="button">
               Comprar
             </button>
           </div>
 
-          <div className={styles.details}>
+          <dl className={styles.details}>
             <div className={styles.detailItem}>
-              <span>SKU</span>
-              <p>123456</p>
+              <dt>SKU</dt>
+              <dd>123456</dd>
             </div>
             <div className={styles.detailItem}>
-              <span>Categoria</span>
-              <p>{product.category || "Sem categoria"}</p>
+              <dt>Categoria</dt>
+              <dd>{product.category || "Sem categoria"}</dd>
             </div>
             <div className={styles.detailItem}>
-              <span>Disponibilidade</span>
-              <p>Em Estoque</p>
+              <dt>Disponibilidade</dt>
+              <dd>Em Estoque</dd>
             </div>
-          </div>
+          </dl>
         </div>
       </section>
 
-      <section className={styles.relatedSection}>
+      <section className={styles.relatedSection} aria-label="Produtos relacionados">
         <h2>Produtos Relacionados</h2>
         <ProductCarousel />
       </section>

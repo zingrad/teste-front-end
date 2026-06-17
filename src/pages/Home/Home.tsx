@@ -15,51 +15,50 @@ import Newsletter from '../../components/Newsletter/Newsletter'
 
 export default function Home() {
     return (
-         <>
         <main>
-            <section className={styles.banner}>
+            <section className={styles.banner} aria-label="Banner promocional">
                 <div className={styles.bannerContainer}>
                     <h1>Venha conhecer nossas <span>promoções</span></h1>
                     <h2><span>50% Off</span> nos produtos</h2>
                     <a href="#" className={styles.btn}>Ver Produto</a>
                 </div>
-                <img src={Banner} alt="Banner Econverse" title="Banner Econverse" className={styles.bannerImage} />
+                <img src={Banner} alt="Banner Econverse" title="Banner Econverse" className={styles.bannerImage} loading="eager" width="1280" height="380" fetchPriority="high" />
             </section>
 
-            <section className={styles.categories}>
+            <section className={styles.categories} aria-label="Categorias de produtos">
                 <div>
-                    <img className={styles.categoriesImg} src={technology} alt="Tecnologia" title="Tecnologia" />
+                    <img className={styles.categoriesImg} src={technology} alt="Tecnologia" title="Tecnologia" width="64" height="64" />
                     <h3>Tecnologia</h3>
                 </div>
                 <div>
-                    <img className={styles.categoriesImg} src={superMarket} alt="Super Mercado" title="Super Mercado" />
+                    <img className={styles.categoriesImg} src={superMarket} alt="Super Mercado" title="Super Mercado" width="64" height="64" />
                     <h3>Super Mercado</h3>
                 </div>
                 <div>
-                    <img className={styles.categoriesImg} src={drinks} alt="Bebidas" title="Bebidas" />
+                    <img className={styles.categoriesImg} src={drinks} alt="Bebidas" title="Bebidas" width="64" height="64" />
                     <h3>Bebidas</h3>
                 </div>
                 <div>
-                    <img className={styles.categoriesImg} src={tools} alt="Ferramentas" title="Ferramentas" />
+                    <img className={styles.categoriesImg} src={tools} alt="Ferramentas" title="Ferramentas" width="64" height="64" />
                     <h3>Ferramentas</h3>
                 </div>
                 <div>
-                    <img className={styles.categoriesImg} src={health} alt="Saúde" title="Saúde" />
+                    <img className={styles.categoriesImg} src={health} alt="Saúde" title="Saúde" width="64" height="64" />
                     <h3>Saúde</h3>
                 </div>
                 <div>
-                    <img className={styles.categoriesImg} src={sports} alt="Esportes" title="Esportes e Fitness" />
+                    <img className={styles.categoriesImg} src={sports} alt="Esportes e Fitness" title="Esportes e Fitness" width="64" height="64" />
                     <h3>Esportes e Fitness</h3>
                 </div>
                 <div>
-                    <img className={styles.categoriesImg} src={fashion} alt="Moda" title="Moda" />
+                    <img className={styles.categoriesImg} src={fashion} alt="Moda" title="Moda" width="64" height="64" />
                     <h3>Moda</h3>
                 </div>
             </section>
 
-            <section className={styles.relatedProducts}>
+            <section className={styles.relatedProducts} aria-label="Produtos relacionados - Tecnologia">
                 <h2 className={styles.relatedTitle}>Produtos Relacionados</h2>
-                <nav>
+                <nav aria-label="Filtros de categoria">
                     <ul>
                         <li><a href="#">Celular</a></li>
                         <li><a href="#">Acessórios</a></li>
@@ -72,13 +71,13 @@ export default function Home() {
                 <ProductCarousel />
             </section>
             <Partners />
-            <section className={styles.relatedProducts}>
+            <section className={styles.relatedProducts} aria-label="Mais produtos relacionados">
                 <h2 className={styles.relatedTitle}>Produtos Relacionados</h2>
                 <span>Ver todos</span>
                 <ProductCarousel />
             </section>
             <Partners />
-            <section className={styles.brands}>
+            <section className={styles.brands} aria-label="Navegue por marcas">
                 <h2>Navegue por marcas</h2>
                 <div className={styles.brandsContainer}>
                     <div className={styles.brand}>
@@ -98,13 +97,12 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-             <section className={styles.relatedProducts}>
+             <section className={styles.relatedProducts} aria-label="Produtos relacionados adicionais">
                 <h2 className={styles.relatedTitle}>Produtos Relacionados</h2>
                 <span>Ver todos</span>
                 <ProductCarousel />
             </section>
             <Newsletter />
         </main>
-        </>
     );
 }

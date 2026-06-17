@@ -25,10 +25,10 @@ export default function Counter({ onChange }: CounterProps) {
   };
 
   return (
-    <div className={styles.counter}>
-      <button onClick={decrement}>−</button>
-      <span>{count.toString().padStart(2, "0")}</span>
-      <button onClick={increment}>+</button>
+    <div className={styles.counter} role="group" aria-label="Seletor de quantidade">
+      <button onClick={decrement} aria-label="Diminuir quantidade" type="button">−</button>
+      <span aria-live="polite" aria-atomic="true">{count.toString().padStart(2, "0")}</span>
+      <button onClick={increment} aria-label="Aumentar quantidade" type="button">+</button>
     </div>
   );
 }

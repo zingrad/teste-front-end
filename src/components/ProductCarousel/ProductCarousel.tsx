@@ -45,8 +45,8 @@ export default function ProductCarousel() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  if (loading) return <p>Carregando produtos...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p role="status" aria-live="polite">Carregando produtos...</p>;
+  if (error) return <p role="alert">{error}</p>;
   if (products.length === 0) return <p>Nenhum produto encontrado.</p>;
 
   const closeModal = () => {
@@ -57,6 +57,7 @@ export default function ProductCarousel() {
   const startIndex = currentPage * productsPerPage;
   const endIndex = startIndex + productsPerPage;
   const visibleProducts = products.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(products.length / productsPerPage);
 
   const nextPage = () => {
     if (endIndex < products.length) setCurrentPage((prev) => prev + 1);
@@ -67,16 +68,22 @@ export default function ProductCarousel() {
   };
 
   return (
-    <div className={styles.carouselWrapper}>
-      <button className={styles.prevBtn} onClick={prevPage}>
+    <div className={styles.carouselWrapper} role="region" aria-label="Carrossel de produtos">
+      <button
+        className={styles.prevBtn}
+        onClick={prevPage}
+        aria-label="Página anterior de produtos"
+        type="button"
+        disabled={currentPage === 0}
+      >
         ‹
       </button>
 
-      <div className={styles.productCarousel}>
+      <div className={styles.productCarousel} aria-live="polite">
         {visibleProducts.map((product, index) => (
-          <div key={index} className={styles.productCard}>
+          <article key={startIndex + index} className={styles.productCard}>
             <Link
-              to={`/product/${product.id || index}`}
+              to={`/product/${product.id || startIndex + index}`}
               className={styles.productLink}
             >
               <img
@@ -84,6 +91,8 @@ export default function ProductCarousel() {
                 alt={product.productName}
                 title={product.productName}
                 loading="lazy"
+                width="200"
+                height="200"
               />
               <h3>{product.productName}</h3>
             </Link>
@@ -100,22 +109,34 @@ export default function ProductCarousel() {
               R$ {product.price.toLocaleString("pt-BR")}
             </strong>
             <p className={styles.installments}>
-              ou 2x de R$ {product.price / 2} sem juros
+              ou 2x de R$ {(product.price / 2).toLocaleString("pt-BR", { minimumFractionDigits: 2 })} sem juros
             </p>
             <p className={styles.shipping}>Frete grátis</p>
-            <Link to={`/product/${product.id || index}`} className={styles.btn}>
+            <Link to={`/product/${product.id || startIndex + index}`} className={styles.btn}>
               Comprar
             </Link>
-          </div>
+          </article>
         ))}
       </div>
 
-      <button className={styles.nextBtn} onClick={nextPage}>
+      <button
+        className={styles.nextBtn}
+        onClick={nextPage}
+        aria-label="Próxima página de produtos"
+        type="button"
+        disabled={currentPage >= totalPages - 1}
+      >
         ›
       </button>
 
       {modalProduct && (
-        <div className={styles.modalOverlay} onClick={() => closeModal()}>
+        <div
+          className={styles.modalOverlay}
+          onClick={() => closeModal()}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Detalhes do produto ${modalProduct.productName}`}
+        >
           <div
             className={styles.modalContent}
             onClick={(event) => event.stopPropagation()}
@@ -126,6 +147,8 @@ export default function ProductCarousel() {
               alt={modalProduct.productName}
               title={modalProduct.productName}
               loading="lazy"
+              width="300"
+              height="300"
             />
             <div>
               <h4>{modalProduct.productName}</h4>
@@ -142,13 +165,20 @@ export default function ProductCarousel() {
               >
                 Veja mais detalhes do produto &gt;
               </Link>
-              <img
+              <button
                 className={styles.closeButton}
                 onClick={() => closeModal()}
-                src={close}
-                alt="Fechar"
-                title="Fechar"
-              />
+                aria-label="Fechar detalhes do produto"
+                type="button"
+              >
+                <img
+                  src={close}
+                  alt=""
+                  aria-hidden="true"
+                  width="20"
+                  height="20"
+                />
+              </button>
               <div className={styles.cart}>
                 <Counter onChange={setQuantity} />
                 <Link

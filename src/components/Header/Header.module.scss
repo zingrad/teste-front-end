@@ -67,6 +67,9 @@ header {
     .mobileMenuToggle {
         display: none;
         cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
 
         @media (max-width: $breakpoint-tablet) {
             display: flex;
@@ -234,6 +237,9 @@ header {
     top: 20px;
     right: 20px;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
 
     @media (max-width: $breakpoint-tablet) {
         display: block;
