@@ -2,16 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Product } from "../../types/product";
 import styles from "./ProductCarousel.module.scss";
-import close from "../../assets/icons/close.svg";
-
-import Counter from "../Counter/Counter";
 
 export default function ProductCarousel() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [modalProduct, setModalProduct] = useState<Product | null>(null);
-  const [quantity, setQuantity] = useState(1);
 
   const [currentPage, setCurrentPage] = useState(0);
   const productsPerPageDesktop = 4;
@@ -48,11 +43,6 @@ export default function ProductCarousel() {
   if (loading) return <p role="status" aria-live="polite">Carregando produtos...</p>;
   if (error) return <p role="alert">{error}</p>;
   if (products.length === 0) return <p>Nenhum produto encontrado.</p>;
-
-  const closeModal = () => {
-    setModalProduct(null);
-    setQuantity(1);
-  };
 
   const startIndex = currentPage * productsPerPage;
   const endIndex = startIndex + productsPerPage;
@@ -128,70 +118,6 @@ export default function ProductCarousel() {
       >
         ›
       </button>
-
-      {modalProduct && (
-        <div
-          className={styles.modalOverlay}
-          onClick={() => closeModal()}
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Detalhes do produto ${modalProduct.productName}`}
-        >
-          <div
-            className={styles.modalContent}
-            onClick={(event) => event.stopPropagation()}
-          >
-            <img
-              className={styles.productImg}
-              src={modalProduct.photo}
-              alt={modalProduct.productName}
-              title={modalProduct.productName}
-              loading="lazy"
-              width="300"
-              height="300"
-            />
-            <div>
-              <h4>{modalProduct.productName}</h4>
-              <strong>
-                R$ {(modalProduct.price * quantity).toLocaleString("pt-BR")}
-              </strong>
-              <p>
-                Many desktop publishing packages and web page editors now many
-                desktop publishing
-              </p>
-              <Link
-                to={`/product/${modalProduct.id || 0}`}
-                className={styles.showMore}
-              >
-                Veja mais detalhes do produto &gt;
-              </Link>
-              <button
-                className={styles.closeButton}
-                onClick={() => closeModal()}
-                aria-label="Fechar detalhes do produto"
-                type="button"
-              >
-                <img
-                  src={close}
-                  alt=""
-                  aria-hidden="true"
-                  width="20"
-                  height="20"
-                />
-              </button>
-              <div className={styles.cart}>
-                <Counter onChange={setQuantity} />
-                <Link
-                  to={`/product/${modalProduct.id || 0}`}
-                  className={styles.btn}
-                >
-                  Comprar
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
