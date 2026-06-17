@@ -54,25 +54,24 @@
       gap: 5px;
     }
 
-     @media screen and (max-width: $breakpoint-desktop) {
+    @media screen and (max-width: $breakpoint-desktop) {
       grid-template-columns: repeat(1, 1fr);
     }
 
-
     @media screen and (max-width: $breakpoint-tablet) {
       grid-template-columns: repeat(1, 1fr);
+
+      .inputGroup {
+        flex-direction: column;
+      }
+
+      input[type="text"], .btn {
+        width: 100%;
+      }
     }
 
     @media screen and (max-width: $breakpoint-mobile) {
       grid-template-columns: repeat(1, 1fr);
-
-      .inputGroup {
-        flex-wrap: wrap;
-      }
-
-      input[type="text"] {
-        width: 100%;
-      }
     }
   }
 }

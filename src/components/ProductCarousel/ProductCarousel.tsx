@@ -15,12 +15,12 @@ export default function ProductCarousel() {
 
   const [currentPage, setCurrentPage] = useState(0);
   const productsPerPageDesktop = 4;
-  const productsPerPageTablet = 2;
+  const productsPerPageTablet = 3;
   const productsPerPageMobile = 1;
 
   const getProductsPerPage = () => {
-    if (window.innerWidth <= 480) return productsPerPageMobile;
-    if (window.innerWidth <= 768) return productsPerPageTablet;
+    if (window.innerWidth <= 600) return productsPerPageMobile;
+    if (window.innerWidth <= 900) return productsPerPageTablet;
     return productsPerPageDesktop;
   };
 

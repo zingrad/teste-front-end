@@ -227,39 +227,53 @@
   h2 {
     text-align: center;
     color: $purple;
+    margin-bottom: 2rem;
   }
 
   .brandsContainer {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     padding-top: 2rem;
-    gap: 8px;
+    gap: 1rem;
+    place-items: center;
 
     .brand {
       border-radius: 50%;
       box-shadow: 0 7px 20px rgba(0, 0, 0, 0.13);
-      width: 200px;
-      height: 200px;
+      width: clamp(120px, 100%, 200px);
+      aspect-ratio: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto;
+      transition: transform .3s, box-shadow .3s;
+
+      img {
+        width: 80%;
+        height: 80%;
+        object-fit: contain;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
     }
 
-
     @media screen and (max-width: $breakpoint-desktop) {
-      grid-template-columns: repeat(3, 1fr);
-      justify-content: center;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
     }
 
     @media screen and (max-width: $breakpoint-tablet) {
       grid-template-columns: repeat(3, 1fr);
-      justify-content: center;
+      gap: 1.5rem;
+      padding-top: 1.5rem;
     }
 
     @media screen and (max-width: $breakpoint-mobile) {
-      grid-template-columns: repeat(1, 1fr);
-      justify-content: center;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      padding-top: 1rem;
     }
   }
 }
